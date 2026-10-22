@@ -1,0 +1,22 @@
+[project]
+name = "adventofcode"
+version = "2026.0.0"
+description = "My Advent of Code Solutions"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.1",
+    "ty>=0.0.90",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+pythonpath = ["."]
+addopts = "--import-mode=importlib -p no:cacheprovider"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ANN"]

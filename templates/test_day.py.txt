@@ -1,0 +1,23 @@
+"""Set expected answers and remove skip markers as each part is implemented.
+
+Example input: examples/{{YEAR}}/day{{DAY}}.txt
+Run: mise run test test/sol_{{YEAR}}/test_day{{DAY}}.py
+"""
+
+from pathlib import Path
+
+import pytest
+
+from src.sol_{{YEAR}}.day{{DAY}} import solution
+
+EXAMPLE = Path(__file__).resolve().parents[2] / "examples/{{YEAR}}/day{{DAY}}.txt"
+
+
+@pytest.mark.skip(reason="Replace with the example answer, then remove this marker.")
+def test_part1() -> None:
+    assert solution.part1(solution.parse(EXAMPLE.read_text(encoding="utf-8"))) == 0
+
+
+@pytest.mark.skip(reason="Replace with the example answer, then remove this marker.")
+def test_part2() -> None:
+    assert solution.part2(solution.parse(EXAMPLE.read_text(encoding="utf-8"))) == 0

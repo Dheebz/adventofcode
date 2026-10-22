@@ -1,0 +1,46 @@
+# Thin shortcuts around the Python runner and the uv environment.
+# Extra arguments are forwarded to the command. Tasks run from the repo root.
+
+[env]
+PYTHONDONTWRITEBYTECODE = "1"
+RUFF_NO_CACHE = "true"
+
+[tasks.setup]
+description = "Install Python development dependencies from uv.lock"
+run = "uv sync"
+
+[tasks.new]
+description = 'Create a puzzle: mise run new YEAR DAY ["Title of the Puzzle"]'
+run = "uv run python main.py new"
+
+[tasks.solution]
+description = "Run a puzzle: mise run solution YEAR DAY"
+run = "uv run python main.py run"
+
+[tasks.example]
+description = "Run the example: mise run example YEAR DAY"
+run = "uv run python main.py run --example"
+
+[tasks.test]
+description = "Run tests; optionally append a test path or pytest options"
+run = "uv run python scripts/check_tests.py"
+
+[tasks.lint]
+description = "Check Python code with Ruff"
+run = "uv run ruff check ."
+
+[tasks.format]
+description = "Format Python code with Ruff"
+run = "uv run ruff format ."
+
+[tasks.format-check]
+description = "Check formatting without changing files"
+run = "uv run ruff format --check ."
+
+[tasks.types]
+description = "Check Python types with ty"
+run = "uv run ty check"
+
+[tasks.check]
+description = "Run tests, lint, formatting checks, and type checks"
+depends = ["test", "lint", "format-check", "types"]

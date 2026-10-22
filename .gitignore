@@ -1,0 +1,44 @@
+# Personal puzzle inputs; commit examples and tests instead.
+/inputs/
+
+# Python bytecode and build output
+__pycache__/
+*.py[cod]
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Tool caches and coverage reports (tasks disable Python, pytest, and Ruff caches)
+.pytest_cache/
+.ruff_cache/
+.ty_cache/
+.mypy_cache/
+.hypothesis/
+.uv-cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Local environment and mise overrides
+.env
+.env.*
+!.env.example
+mise.local.toml
+.mise.local.toml
+
+# Rust and JavaScript dependencies/build output
+target/
+node_modules/
+
+# OS files and editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
