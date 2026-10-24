@@ -1,7 +1,7 @@
 """Day 6 examples: inclusive rectangles, on/off state, and brightness.
 
 Each parametrized case starts with a fresh grid. The example file combines the
-three part-one commands in order. Part two remains skipped until implemented.
+three part-one commands in order, with expected results for both rule sets.
 Run: mise run test test/sol_2015/test_day06.py
 """
 
@@ -119,3 +119,8 @@ def test_part2() -> None:
 )
 def test_part2_examples(text: str, expected: int) -> None:
     assert solution.part2(solution.parse(text)) == expected
+
+
+def test_turn_off_decreases_brightness_without_resetting() -> None:
+    text = "toggle 0,0 through 0,0\nturn off 0,0 through 0,0"
+    assert solution.part2(solution.parse(text)) == 1

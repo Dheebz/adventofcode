@@ -7,8 +7,8 @@ from src.solution import Solution
 type Coordinate = tuple[int, int]
 type Instruction = tuple[str, Coordinate, Coordinate]
 type Data = Iterable[Instruction]
-type State = bool | int
-type Grid = list[list[State]]
+type LightGrid = list[list[bool]]
+type BrightnessGrid = list[list[int]]
 GRID_SIZE: tuple[int, int] = (1000, 1000)
 
 
@@ -52,9 +52,9 @@ class Puzzle(Solution[Data]):
 
     def part1(self, data: Data) -> int:
         """Count lights left on after applying each inclusive rectangle command."""
-        grid: Grid = []
+        grid: LightGrid = []
         for _ in range(GRID_SIZE[0]):
-            row: list[State] = [0] * GRID_SIZE[1]
+            row: list[bool] = [False] * GRID_SIZE[1]
             grid.append(row)
 
         for action, (x1, y1), (x2, y2) in data:
@@ -72,10 +72,10 @@ class Puzzle(Solution[Data]):
         return sum(sum(row) for row in grid)
 
     def part2(self, data: Data) -> int:
-        """Solve part two and return its answer."""
-        grid: Grid = []
+        """Return total brightness, keeping each light at or above zero."""
+        grid: BrightnessGrid = []
         for _ in range(GRID_SIZE[0]):
-            row: list[State] = [False] * GRID_SIZE[1]
+            row: list[int] = [0] * GRID_SIZE[1]
             grid.append(row)
         for action, (x1, y1), (x2, y2) in data:
             for x in range(x1, x2 + 1):
